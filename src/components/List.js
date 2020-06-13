@@ -23,7 +23,7 @@ export default function List({ todo_id, item }, props) {
     e.preventDefault();
     axios({
       method: "delete",
-      url: `http://localhost:3001/todo/${todo_id}/${state.user_id}`,
+      url: `https://sleepy-cliffs-82593.herokuapp.com/todo/${todo_id}/${state.user_id}`,
     }).then((res) => {
       dispatch({ type: "DELETE", payload: res.data });
       localStorage.setItem("data", JSON.stringify(res.data));

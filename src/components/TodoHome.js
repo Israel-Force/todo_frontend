@@ -9,7 +9,7 @@ export default function TodoHome(props) {
   const { state, dispatch } = useContext(TodoContext);
 
   useEffect(() => {
-    axios(`http://localhost:3001/todo/${state.user_id}`).then((res) => {
+    axios(`https://sleepy-cliffs-82593.herokuapp.com/todo/${state.user_id}`).then((res) => {
       dispatch({ type: "UPDATE_USER", payload: res.data });
       localStorage.setItem("data", JSON.stringify(res.data));
     });

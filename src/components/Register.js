@@ -57,7 +57,7 @@ export default function Register(props) {
     dispatch({ type: "LOADING", payload: true });
     axios({
       method: "post",
-      url: "http://localhost:3001/register",
+      url: "https://sleepy-cliffs-82593.herokuapp.com/register",
       data: {
         first_name: reg_first,
         last_name: reg_last,
@@ -78,9 +78,9 @@ export default function Register(props) {
       .catch((err) => {
         dispatch({ type: "DONE_LOADING", payload: false });
         setRegcorr(true);
-        setTimeout(() => {
-          window.location = "/";
-        }, 3000);
+        // setTimeout(() => {
+        //   window.location = "/";
+        // }, 3000);
       });
   };
 

@@ -12,7 +12,7 @@ export default function Add(props) {
   };
   const post = (e) => {
     e.preventDefault();
-    axios(`http://localhost:3001/todo/${state.user_id}`, {
+    axios(`https://sleepy-cliffs-82593.herokuapp.com/todo/${state.user_id}`, {
       method: "post",
       data: {
         user_id: state.user_id,

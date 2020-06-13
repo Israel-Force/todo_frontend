@@ -23,7 +23,7 @@ export default function Header(props) {
     e.preventDefault();
     axios({
       method: "delete",
-      url: `http://localhost:3001/todo/${state.todo_id}/${state.user_id}`,
+      url: `https://sleepy-cliffs-82593.herokuapp.com/todo/${state.todo_id}/${state.user_id}`,
     }).then((res) => {
       dispatch({ type: "DELETE", payload: res.data });
       localStorage.setItem("data", JSON.stringify(res.data));
@@ -40,7 +40,7 @@ export default function Header(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios(`http://localhost:3001/todo/${state.user_id}/${search}`, {
+    axios(`https://sleepy-cliffs-82593.herokuapp.com/todo/${state.user_id}/${search}`, {
       method: "post",
       data: {
         search,
