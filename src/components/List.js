@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { TodoContext } from "../context/TodoContext";
 import axios from "axios";
-//import draged_item from '../draged_item.png'
+
 
 export default function List({ todo_id, item }, props) {
   const { state, dispatch } = useContext(TodoContext);

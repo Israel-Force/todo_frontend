@@ -367,8 +367,8 @@ right: 0em;
   color: #181c22;
   cursor: pointer;
   font-size: 0.8rem;
-  overflow: hidden;
-}
+  /*overflow: hidden;
+*/}
 
 .loading{
  background-image: url('./background.jpg');
@@ -383,7 +383,7 @@ right: 0em;
 
 .loader{
   position: absolute;
-  top:30%;
+  top:10%;
   left:50%;
   width:10px;
   height:10px;

@@ -4,9 +4,9 @@ import axios from "axios";
 import { TodoContext } from "../context/TodoContext";
 import Register from "./Register";
 import force from "../force.png";
-// import art from '../art.png'
-// import register_todo from '../register_todo.png'
 import art1 from "../art1.png";
+import Loader from "./Loader"
+import {motion} from 'framer-motion'
 
 export default function Signin(props) {
   const { state, dispatch } = useContext(TodoContext);
@@ -52,8 +52,26 @@ export default function Signin(props) {
       });
   };
 
+    const buttonVariant = {
+      visible: {
+        scale: 1.1,
+      }
+  }
+
+  const artVariant = {
+    hidden: {
+      y: "-100vh"
+    },
+    visible: {
+      y: 0,
+      transition: {type: "spring", stiffness: 120}
+    }
+  }
+
   const view = state.loading ? (
-    <div className="loading"></div>
+    <div className="loading">
+      <Loader />
+    </div>
   ) : (
     <div>
       <div className="header">
@@ -61,9 +79,13 @@ export default function Signin(props) {
           <img src={force} alt="logo" />
         </div>
         <div className="logout">
-          <button onClick={() => setRegister(!register)}>
+          <motion.button 
+          variants={buttonVariant} 
+          whileHover="visible"
+          type="submit"
+          onClick={() => setRegister(!register)}>
             {register ? "Login" : "Register"}
-          </button>
+          </motion.button>
         </div>
       </div>
       {!register ? (
@@ -91,9 +113,13 @@ export default function Signin(props) {
               wrong email or password
             </p>
           </form>
-          <div className="todo">
+          <motion.div
+          variants ={artVariant}
+          initial="hidden"
+          animate="visible" 
+          className="todo">
             <img src={art1} alt="art1" />
-          </div>
+          </motion.div>
         </div>
       ) : (
         <div>

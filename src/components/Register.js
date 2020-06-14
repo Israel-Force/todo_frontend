@@ -2,6 +2,10 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { TodoContext } from "../context/TodoContext";
 import register_pics from "../register_pics.png";
+import Loader from "./Loader"
+import {motion} from 'framer-motion'
+
+
 export default function Register(props) {
   const { state, dispatch } = useContext(TodoContext);
 
@@ -78,11 +82,20 @@ export default function Register(props) {
       .catch((err) => {
         dispatch({ type: "DONE_LOADING", payload: false });
         setRegcorr(true);
-        // setTimeout(() => {
-        //   window.location = "/";
-        // }, 3000);
+        setTimeout(() => {
+          window.location = "/";
+        }, 3000);
       });
   };
+    const regVariant = {
+    hidden: {
+      y: "-100vh"
+    },
+    visible: {
+      y: 0,
+      transition: {type: "spring", stiffness: 120}
+    }
+  }
 
   const reg = (e) => {
     e.preventDefault();
@@ -95,7 +108,9 @@ export default function Register(props) {
   };
 
   const view = state.loading ? (
-    <div className="loading"></div>
+    <div className="loading">
+      <Loader />
+    </div>
   ) : (
     <div>
       <form className="register" onSubmit={reg}>
@@ -164,12 +179,17 @@ export default function Register(props) {
           </label>
         </div>
         <div className="block">
-          <button type="submit">Register</button>
+          <button>Register</button>
         </div>
       </form>
-      <div className="register_pic">
+      <motion.div 
+      ariants ={regVariant}
+      initial="hidden"
+      animate="visible" 
+      className="todo"
+      className="register_pic">
         <img src={register_pics} alt="art1" />
-      </div>
+      </motion.div>
     </div>
   );
 
