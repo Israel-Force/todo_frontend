@@ -104,7 +104,7 @@ right: 0em;
  
  .todo-table form input[type="text"]{
   width: 70%;
-  padding: 20px;
+  padding: 1.2em;
   background:#181c22;
   border: 0;
   float: left;
@@ -129,13 +129,13 @@ right: 0em;
 }
 @media only screen and (max-width: 490px){
   .todo-table form input[type="text"]{
-    width: 63%;
+    width: 60%;
     font-size: 1rem;
   }
 }
 
  button{
-  padding: 20px;
+  padding: 1.2em;
   width: 25%;
   float: left;
   background: #23282e;
@@ -153,7 +153,21 @@ right: 0em;
   .todo-table form button{
     font-size: 0.9em;
   }
-} 
+}
+@media only screen and (max-width: 490px){
+  .todo-table form input[type="text"]{
+    width: 60%;
+    font-size: 0.7rem;
+    padding: 1.2em;
+  }
+
+  .todo-table form button{
+    width:28%;
+    font-size: 0.6em;
+    padding: 1.5em;
+  }
+}
+
  ul{
   list-style-type: none;
   padding: 0;
@@ -362,8 +376,19 @@ right: 0em;
  background-size: contain;
  background-repeat: no-repeat;
  background-attachment: fixed;
+ position: relative;
  width: 100vw;
  height: 100vh; 
+}
+
+.loader{
+  position: absolute;
+  top:30%;
+  left:50%;
+  width:10px;
+  height:10px;
+  border-radius: 50%;
+  background: #fff;
 }
 
 .display{
@@ -396,7 +421,11 @@ right: 0em;
     left: 80%;
   }
 }
-
+@media only screen and (max-width:450px){
+  .trash{
+    display:none;
+  }
+}
 .trash img {
   width:100%;
   height: auto;
@@ -425,11 +454,7 @@ right: 0em;
     width: 24em;
   }
 }
-@media only screen and (max-width: 490px){
-  .header_form{
-    left: 12%;
-  }
-}
+
 
 .header_form input{
   width:70%;
@@ -491,6 +516,30 @@ right: 0em;
   width:30%;
   height:auto;
 }
+@media only screen and (max-width: 490px){
+  .header_form{
+    top:25%;
+    left: 17%;
+    width:15em;
+  }
+  .header_form input{
+    width:70%;
+    padding: 1.05em;
+    font-size: 0.5rem;
+  }
+  .header_form button{
+    width:14%;
+    top:1%;
+    left:53%; 
+    padding:11px;
+  }
+  .header_form .search_img{
+    width:60%;
+    padding:0.2em;
+  } 
+}
+
+
 
 /*responsiveness*/
 
@@ -606,4 +655,79 @@ right: 0em;
   .register button{
     width:64%;
   } 
+ }
+
+ @media only screen and (max-width: 450px) {
+  .logout{
+    width: 13%;
+    left:86%;
+  } 
+  .logout button{
+   padding: 0.5em;
+   width: 76%;
+   font-size: 0.5rem;
+ }
+ .login{
+  width: 20em;
+  max-width: 30em;
+ overflow: hidden;
+}
+.login button{
+  width: 77.5%;
+}
+.register input{
+   width:55%;
+  padding: 0.5em;
+  font-size: 0.8rem;
+  height: auto;
+ }
+
+ .register button{
+   width:59.5%;
+   font-size: 0.7rem;
+ } 
+
+ .register label {
+  width:35%;
+  font-size: 0.2rem;
+  padding-left: 0.5em;
+}
+
+ }
+
+ @media only screen and (max-width: 365px) {
+  .logout{
+    width: 13%;
+    left:86%;
+  } 
+  .logout button{
+   padding: 0.5em;
+   width: 90%;
+   font-size: 0.5rem;
+ }
+ .login{
+  width: 16em;
+  max-width: 30em;
+ overflow: hidden;
+}
+.login button{
+  width: 79.5%;
+}
+.register input{
+  width:51%;
+ padding: 0.5em;
+ font-size: 0.8rem;
+ height: auto;
+}
+
+.register button{
+  width:56.5%;
+  font-size: 0.7rem;
+} 
+
+.register label {
+ width:43%;
+ font-size: 0.2rem;
+}
+
  }

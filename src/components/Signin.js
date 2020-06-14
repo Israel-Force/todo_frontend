@@ -11,7 +11,6 @@ import art1 from "../art1.png";
 export default function Signin(props) {
   const { state, dispatch } = useContext(TodoContext);
   const [register, setRegister] = useState(false);
-
   const [log_email, setLog_email] = useState("");
   const [log_password, setLog_password] = useState("");
   const [corr, setCorr] = useState(false);
