@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "framer-motion": "^1.11.0",
+    "moment-timezone": "^0.5.31",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
@@ -16,13 +17,12 @@
     "serve": "^11.3.2",
     "uuid": "^8.0.0"
   },
-  "scripts": {
+ "scripts": {
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
     "heroku-postbuild": "npm run build"
   },
-
   "eslintConfig": {
     "extends": "react-app"
   },

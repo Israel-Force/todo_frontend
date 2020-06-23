@@ -186,7 +186,6 @@ export default function Register(props) {
       ariants ={regVariant}
       initial="hidden"
       animate="visible" 
-      className="todo"
       className="register_pic">
         <img src={register_pics} alt="art1" />
       </motion.div>

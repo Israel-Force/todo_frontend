@@ -47,7 +47,7 @@ export default function Signin(props) {
         dispatch({ type: "DONE_LOADING", payload: false });
         setCorr(true);
         setTimeout(() => {
-          window.location = "/";
+          setCorr(false)
         }, 2000);
       });
   };

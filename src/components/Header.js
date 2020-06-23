@@ -38,6 +38,13 @@ export default function Header(props) {
     setSearch(e.target.value);
   };
 
+  const displayBin = () => {
+    setDisplay(true)
+    setTimeout(() => {
+      setDisplay(false)
+    }, 5000);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios(`https://sleepy-cliffs-82593.herokuapp.com/todo/${state.user_id}/${search}`, {
@@ -78,6 +85,7 @@ export default function Header(props) {
         onDragOver={over}
         onMouseOver={() => setDisplay(true)}
         onMouseLeave={() => setDisplay(false)}
+        onClick={displayBin}
       >
         <img src={trash_bin} alt="logo" />
       </div>

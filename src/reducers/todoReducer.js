@@ -36,6 +36,14 @@ const todoReducer = (state, action) => {
       return { ...state, loading: action.payload };
     case "ITEM":
       return { ...state, todo_id: action.payload };
+    case 'CHNG_POP':
+      return {...state, pop: action.payload}
+      case 'CHNG_POPUP':
+        return {...state, popUp: action.payload}
+      case "CHNG_SETLOAD":
+        return {...state, setLoad: action.payload}
+      case "CHNG_LOADED":
+        return {...state, loaded: action.payload}
     default:
       return state;
   }

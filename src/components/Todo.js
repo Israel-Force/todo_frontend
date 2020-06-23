@@ -5,10 +5,12 @@ import List from "./List";
 export default function Todo() {
   const { state } = useContext(TodoContext);
   return (
-    <ul>
-      {state.data.map((todo) =>
-        todo.item === null ? false : <List key={todo.todo_id} {...todo} />
-      )}
-    </ul>
+    <div className="todo_container">
+      <ul>
+        {state.data.map((todo) =>
+          todo.item === null ? false : <List key={todo.todo_id} {...todo} />
+        )}
+      </ul>
+    </div>
   );
 }

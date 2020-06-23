@@ -86,14 +86,142 @@ right: 0em;
   height: auto;
 }
 
+.backdrop{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+.modal{
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: #0d1521;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal p span{
+  font-style: italic;
+}
+
+.modal h4{
+  position: absolute;
+  top:1%;
+  right:1%;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  cursor: pointer;
+  padding: 0.4em;
+  text-align: center;
+}
+
+.modal h4:hover{
+  background: red;
+}
+
  .todo-table{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
   width: 95%;
-  background: #222427;
+  max-width:1300px;
   margin: 2% auto 0;
   padding: 20px;
   box-sizing: border-box;
+  overflow: hidden;
  }
+
+ .todo-table .add_container{
+  padding: 0.5em;
+  flex:0 0 40%;
+  background: #222427;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin:0;
+}
+
+
+.todo-table .add_container form {
+  width:100%;
+}
+
+
+.todo-table .add_container form p {
+  margin-bottom: 0;
+  margin-left: 1.5em;
+}
+
+.todo-table .add_container form input[type="number"]{
+  -moz-appearance: textfield;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  width: 20%;
+  padding: 1.2em;
+  background:#181c22;
+  border: 0;
+  font-size: 1.1rem;
+  color: #989898;
+  box-sizing: border-box;
+ }
+ .todo-table .add_container form select{
+  -moz-appearance: textfield;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  width: 20%;
+  padding: 1.2em;
+  background:#181c22;
+  border: 0;
+  font-size: 1.1rem;
+  color: #989898;
+  box-sizing: border-box;
+ }
+ .todo-table .add_container form .date{
+   display:flex;
+   flex-direction: row;
+   justify-content: space-around; 
+   position: relative;
+ }
+
+ .todo-table .add_container form .date .right{
+   position: absolute;
+   left: 33%;
+   top:35%;
+ }
+ 
+ .todo-table .add_container form .date .left{
+  position: absolute;
+  left: 67%;
+  top:35%;
+}
+
+.todo_container{
+  flex:0 0 45%;
+  background: #222427; 
+  height:335px;
+  overflow-y: scroll;
+}
+
+.todo_container::-webkit-scrollbar{
+  width:10px;
+  cursor: pointer;
+}
+
+.todo_container::-webkit-scrollbar-track{
+  background: rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+.todo_container::-webkit-scrollbar-thumb{
+  background: #222427;
+  cursor: pointer;
+}
  
  .todo-table form:after{
   margin: 0;
@@ -103,70 +231,27 @@ right: 0em;
  }
  
  .todo-table form input[type="text"]{
-  width: 70%;
+  width: 100%;
   padding: 1.2em;
   background:#181c22;
   border: 0;
-  float: left;
   font-size: 1.1rem;
   color: #989898;
+  box-sizing: border-box;
  }
- @media only screen and (max-width: 920px){
-  .todo-table form input[type="text"]{
-    width: 68%;
-  }
-}
-@media only screen and (max-width: 670px){
-  .todo-table form input[type="text"]{
-    width: 66%;
-  }
-}
-@media only screen and (max-width: 550px){
-  .todo-table form input[type="text"]{
-    width: 65%;
-    font-size: 1.1rem;
-  }
-}
-@media only screen and (max-width: 490px){
-  .todo-table form input[type="text"]{
-    width: 60%;
-    font-size: 1rem;
-  }
-}
+
+
 
  button{
   padding: 1.2em;
-  width: 25%;
-  float: left;
+  width: 100%;
   background: #23282e;
   border: 0;
   color: #fff;
   cursor: pointer;
   font-size: 1.1em;
  }
- @media only screen and (max-width: 670px){
-  .todo-table form button{
-    font-size: 1.1em;
-  }
-}
-@media only screen and (max-width: 670px){
-  .todo-table form button{
-    font-size: 0.9em;
-  }
-}
-@media only screen and (max-width: 490px){
-  .todo-table form input[type="text"]{
-    width: 60%;
-    font-size: 0.7rem;
-    padding: 1.2em;
-  }
 
-  .todo-table form button{
-    width:28%;
-    font-size: 0.6em;
-    padding: 1.5em;
-  }
-}
 
  ul{
   list-style-type: none;
@@ -175,19 +260,43 @@ right: 0em;
  }
  
  .item{
+   position: relative;
   width: 100%;
   padding: 20px;
+  padding-bottom: 0;
   box-sizing: border-box;
   font-family: arial;
   font-size: 20px;
   cursor: pointer;
   letter-spacing: 1px;
+  background: rgba(0,0,0,0.2);
+  margin-bottom: 0.2em;
  }
  
- li:hover{
+ .item .task{
+  font-weight: bold;
+  margin-bottom: 0.2em;
+ }
+
+ .item .date{
+   display: inline-block;
+  font-size: 0.6em;
+  color: #909090be;
+ }
+
+ .item p{
+   display:inline-block;
+   margin-left: 0.7em;
+  font-size: 0.6em;
+  color: #909090be;
+  margin-block-start: 0em;
+    margin-block-end: 1em
+ }
+
+ /* li:hover{
   text-decoration: line-through;
   background: rgba(0,0,0,0.2);
- }
+ } */
 
 .login{
   width: 50em;
@@ -332,9 +441,17 @@ right: 0em;
 .header{
   position: relative;
   background-color: #23282e;
-  width:100vw;
+  width:100%;
   height: 4em;
   overflow: hidden;
+}
+
+.header p{
+  font-size: 0.6em;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left:87%;
 }
 
 .force{
@@ -367,8 +484,8 @@ right: 0em;
   color: #181c22;
   cursor: pointer;
   font-size: 0.8rem;
-  /*overflow: hidden;
-*/}
+  overflow: hidden;
+}
 
 .loading{
  background-image: url('./background.jpg');
@@ -384,6 +501,16 @@ right: 0em;
 .loader{
   position: absolute;
   top:10%;
+  left:50%;
+  width:10px;
+  height:10px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.loadtask{
+  position: absolute;
+  top:50%;
   left:50%;
   width:10px;
   height:10px;
@@ -409,10 +536,16 @@ right: 0em;
   .trash{
     left: 86%;
   }
+  .header p {
+    left: 84%;
+  }
 }
 @media only screen and (max-width: 670px){
   .trash{
     left: 82%;
+  }
+  .header p {
+    left: 79%;
   }
 }
 
@@ -420,16 +553,35 @@ right: 0em;
   .trash{
     left: 80%;
   }
+  .header p {
+    left: 76%;
+  }
 }
-@media only screen and (max-width:450px){
+@media only screen and (max-width:490px){
   .trash{
     display:none;
+  }
+  .header p {
+    display: none;
   }
 }
 .trash img {
   width:100%;
   height: auto;
 }
+
+.trash_list{
+  max-width: 1.5em;
+  position: absolute;
+  top: 35%;
+  left: 89%;
+}
+
+.trash_list img {
+  width:70%;
+  height: auto;
+}
+
 
 .header_form{
   position: absolute;
@@ -442,7 +594,7 @@ right: 0em;
     left: 8%;
   }
 }
-@media only screen and (max-width: 670px){
+@media only screen and (max-width: 690px){
   .header_form{
     left: 10%;
   }
@@ -450,11 +602,11 @@ right: 0em;
 
 @media only screen and (max-width: 550px){
   .header_form{
-    top:18%;
-    width: 24em;
+    top:16%;
+    width: 20em;
+    left: 12%;
   }
 }
-
 
 .header_form input{
   width:70%;
@@ -472,6 +624,7 @@ right: 0em;
   outline: none;
 }
 
+
 .header_form button{
   position: absolute;
   top: 0%;
@@ -479,11 +632,12 @@ right: 0em;
   left:55%; 
   background-color: #181c22;
   outline: none;
+  box-sizing: border-box;
 }
 
 @media only screen and (max-width: 550px){
   .header_form button{
-    left:52.5%; 
+    left:53.5%; 
   }
 }
 .header_form button:focus{
@@ -507,11 +661,7 @@ right: 0em;
   background-color: #181c22;
   padding:0.3em;
 }
-@media only screen and (max-width: 550px){
-  .header_form .search_img{
-    padding:0.2em;
-  }
-}
+
 .header_form .search_img img{
   width:30%;
   height:auto;
@@ -519,24 +669,22 @@ right: 0em;
 @media only screen and (max-width: 490px){
   .header_form{
     top:25%;
-    left: 17%;
-    width:15em;
+    width: 15em;
+    left: 16%;
   }
   .header_form input{
-    width:70%;
-    padding: 1.05em;
-    font-size: 0.5rem;
+    padding: 0.6em;
+    font-size: 0.8rem; 
+    float: left;
   }
   .header_form button{
-    width:14%;
-    top:1%;
-    left:53%; 
-    padding:11px;
+
+    height:auto;
+    font-size: 0.6em;
   }
   .header_form .search_img{
-    width:60%;
-    padding:0.2em;
-  } 
+    top:13%;
+  }
 }
 
 
@@ -573,6 +721,18 @@ right: 0em;
   padding-left: 0.9em;
 }
 
+.todo-table .add_container form input[type="number"]{
+  padding: 1.1em;
+  font-size: 0.8rem;
+ }
+ .todo-table .add_container form select{
+  padding: 1.1em;
+  font-size: 0.8rem;
+ }
+
+.todo_container{
+  height:300px;
+}
 }
 
 @media only screen and (max-width: 890px) {
@@ -611,6 +771,32 @@ right: 0em;
   font-size: 0.4rem;
   padding-left: 0.8em;
 }
+
+.todo-table{
+  flex-direction: column;
+  align-content: space-between;
+  height: 750px;
+  position: relative;
+  width: 65%;
+ }
+ .todo-table .add_container{
+  padding: 0.5em;
+  flex:0 0 40%;
+  background: #222427;
+}
+
+.todo-table .add_container form input[type="number"]{
+  padding: 1.2em;
+  font-size: 1.1rem;
+ }
+ .todo-table .add_container form select{
+  padding: 1.2em;
+  font-size: 1.1rem;
+ }
+
+ .todo-table button{
+   margin-top:1em;
+ }
  }
 
  @media only screen and (max-width: 660px) {
@@ -646,7 +832,52 @@ right: 0em;
   padding-left: 0.5em;
 }
 
+.todo-table{
+  height: 750px;
+  width: 85%;
  }
+
+ .todo-table .add_container{
+  padding: 0.5em;
+  flex:0 0 40%;
+  background: #222427;
+}
+
+.todo_container{
+  flex:0 0 45%;
+  background: #222427; 
+  height:335px;
+  overflow-y: scroll;
+}
+ }
+
+ @media only screen and (max-width: 550px){
+  .header_form .search_img{
+    padding:0.25em;
+
+  }
+  .todo-table .add_container form input[type="number"]{
+  padding: 1.1em;
+  font-size: 0.8rem;
+ }
+
+ .todo-table .add_container form select{
+  padding: 1.1em;
+  font-size: 0.8rem;
+ }
+
+ .todo-table .add_container form p {
+   margin-bottom: 1.5em;
+ }
+
+.todo_container{
+  height:300px;
+}
+.todo-table button{
+  margin-top:2em;
+}
+
+}
 
  @media only screen and (max-width: 490px){
   .register label {
@@ -655,6 +886,7 @@ right: 0em;
   .register button{
     width:64%;
   } 
+
  }
 
  @media only screen and (max-width: 450px) {
@@ -693,9 +925,50 @@ right: 0em;
   padding-left: 0.5em;
 }
 
+.todo-table{
+  height: 650px;
+}
+.todo-table .add_container form p {
+ font-size:0.8em;
+ margin-bottom: 1em;
+}
+
+.todo-table .add_container form input[type="number"]{
+  padding: 1.2em;
+  font-size: 0.7rem;
+ }
+ .todo-table .add_container form select{
+  padding: 1.2em;
+  background:#181c22;
+  border: 0;
+  font-size: 0.7rem;
  }
 
- @media only screen and (max-width: 365px) {
+.todo_container{
+  overflow-y: scroll;
+}
+ 
+ .todo-table form input[type="text"]{
+  width: 100%;
+  padding: 1.2em;
+  border: 0;
+  font-size: 0.9rem;
+ }
+
+ .todo-table button{
+  padding: 1.2em;
+  font-size: 1em;
+  margin-top: 1.5em;
+ }
+
+ .item{
+  width: 100%;
+  padding: 20px;
+  font-size: 1em;
+ }
+ }
+
+ @media only screen and (max-width: 390px) {
   .logout{
     width: 13%;
     left:86%;
@@ -729,5 +1002,37 @@ right: 0em;
  width:43%;
  font-size: 0.2rem;
 }
+.todo-table{
+  height: 550px;
+}
+.todo-table .add_container form p {
+ font-size:0.7em;
+ margin-bottom: 0.8em;
+}
 
+.todo-table .add_container form input[type="number"]{
+  padding: 1.2em;
+  font-size: 0.5rem;
+ }
+ .todo-table .add_container form select{
+  padding: 1.2em;
+  background:#181c22;
+  border: 0;
+  font-size: 0.5rem;
+ }
+
+ 
+ .todo-table form input[type="text"]{
+  padding: 1.2em;
+  font-size: 0.7rem;
+ }
+
+ .todo-table button{
+  padding: 1.2em;
+  font-size: 0.8em;
+ }
+
+ .item{
+  font-size: 0.9em;
+ }
  }

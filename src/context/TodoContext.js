@@ -8,6 +8,10 @@ const initialState = {
   user_id: "",
   loading: false,
   todo_id: "",
+  pop: false,
+  popUp: false,
+  setLoad: true,
+  loaded: false
 };
 
 export default function TodoContextProvider(props) {
