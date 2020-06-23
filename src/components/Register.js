@@ -23,7 +23,7 @@ export default function Register(props) {
     first_name: /^[a-z]{2,50}$/i,
     last_name: /^[a-z]{2,50}$/i,
     password: /^[\w]{6,20}$/i,
-    email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
+    email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/i,
   };
 
   const chngFirst = (e) => {
