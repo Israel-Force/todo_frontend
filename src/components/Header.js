@@ -21,11 +21,13 @@ export default function Header(props) {
 
   const rmv = (e) => {
     e.preventDefault();
+     dispatch({ type: "CHNG_LOADED", payload: true });
     axios({
       method: "delete",
       url: `https://sleepy-cliffs-82593.herokuapp.com/todo/${state.todo_id}/${state.user_id}`,
     }).then((res) => {
       dispatch({ type: "DELETE", payload: res.data });
+      dispatch({ type: "CHNG_LOADED", payload: false });
       localStorage.setItem("data", JSON.stringify(res.data));
     });
   };
